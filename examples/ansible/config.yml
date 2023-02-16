@@ -1,0 +1,29 @@
+- name: Setup fluentd, ES for testing
+  hosts: all
+  become: yes
+  gather_facts: false
+  vars:
+    ansible_connection: aws_ssm
+    ansible_aws_ssm_region: ap-southeast-1
+    ansible_aws_ssm_bucket_name: sre-team-tfstate-dev
+  tasks:
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
+      path: /root/fluentd
+      state: directory
+      mode: '0755'
+
+  - name: Copy docker files to instance
+    copy:
+      src: "{{ playbook_dir }}/docker/{{ item }}"
+      dest: "/root/{{ item }}"
+    loop:
+      - "docker-compose.yml"
+      - "fluentd/Dockerfile"
+      - "fluentd/entrypoint.sh"
+      - "fluentd/fluent.conf"
+
+  - name: Up docker-compose
+    ansible.builtin.shell: /usr/local/bin/docker-compose up -d
+    args:
+      chdir: /root
