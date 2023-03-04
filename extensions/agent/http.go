@@ -13,7 +13,7 @@ import (
 	"os"
 	"time"
 
-	"fluentd-lambda-extension/logsapi"
+	"github.com/culiops/fluentd-lambda-extension/extensions/logsapi"
 
 	"github.com/golang-collections/go-datastructures/queue"
 )
