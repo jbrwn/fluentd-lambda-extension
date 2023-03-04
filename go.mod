@@ -1,4 +1,4 @@
-module fluentd-lambda-extension
+module github.com/culiops/fluentd-lambda-extension
 
 go 1.19
 

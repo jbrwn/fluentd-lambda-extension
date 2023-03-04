@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
-	"fluentd-lambda-extension/agent"
-	"fluentd-lambda-extension/extension"
-	"fluentd-lambda-extension/logsapi"
+	"github.com/culiops/fluentd-lambda-extension/extensions/agent"
+	"github.com/culiops/fluentd-lambda-extension/extensions/extension"
+	"github.com/culiops/fluentd-lambda-extension/extensions/logsapi"
 	"fmt"
 	"os"
 	"os/signal"
