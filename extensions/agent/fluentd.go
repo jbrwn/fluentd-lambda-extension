@@ -10,6 +10,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+log.SetOutput(os.Stdout)
 var logger = log.WithFields(log.Fields{"agent": "logsApiAgent"})
 
 const (
