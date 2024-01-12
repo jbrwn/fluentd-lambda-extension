@@ -22,6 +22,7 @@ const InitialQueueSize = 5
 func main() {
 	extensionName := path.Base(os.Args[0])
 	printPrefix := fmt.Sprintf("[%s]", extensionName)
+	log.SetOutput(os.Stdout)
 	logger := log.WithFields(log.Fields{"agent": extensionName})
 
 	extensionClient := extension.NewClient(os.Getenv("AWS_LAMBDA_RUNTIME_API"))
